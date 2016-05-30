@@ -22,7 +22,7 @@ function clean_unvalidate($vars)
     $days_till_second_reminder = elgg_get_plugin_setting("validation_reminder_second_message") * 1;
     $days_till_removal = elgg_get_plugin_setting("validation_reminder_remove") * 1;
 
-    access_show_hidden_entities(TRUE);
+    $proviousAccessShowHiddenEntities = access_show_hidden_entities(true);
     $proviousIgnoreAccess = elgg_set_ignore_access(true);
     $dbprefix = elgg_get_config('dbprefix');
 
@@ -69,7 +69,7 @@ function clean_unvalidate($vars)
     }
 
     elgg_set_ignore_access($proviousIgnoreAccess);
-
+    access_show_hidden_entities($proviousAccessShowHiddenEntities);
 }
 
 function send_validation_reminder_mail($user,$enddate,$pastdays)
