@@ -1,6 +1,6 @@
 {
-  "name": "centillien/messages_extended",
-  "description": "Extend the messages functionality in Elgg",
+  "name": "centillien/validation_reminder",
+  "description": "Reminds user to validate their account. Or removes account after a certain amount of time, if not validated.",
   "type": "elgg-plugin",
   "keywords": [
     "elgg",
@@ -9,8 +9,7 @@
   "license": "GPL-2.0",
   "authors": [
     {
-      "name": "Wouter van Os",
-      "email": "wouter@wouter0100.nl"
+      "name": "Jop Knoppers"
     }
   ]
 }
