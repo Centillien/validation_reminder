@@ -5,7 +5,7 @@
 	<version>1.0.2</version>
 	<category>Users</category>
 	<description>
-		Reminds user to validate their account. Or removes account after a certain amount of time, if not validated.
+		Reminds users to validate their account.
 	</description>
 	<website>https://www.centillien.com</website>
 	<copyright>Copyright 2016 Centillien B.V</copyright>
