@@ -6,6 +6,8 @@ $dutch = array(
 	'validation_reminder:first_message_input' => "De eerste herinnering moet verstuurd worden na:",
 	'validation_reminder:second_message_input' => "De tweede herinnering moet verstuurd worden na:",
 	'validation_reminder:remove_input' => "Het account moet verwijderd worden na:",
+	'validation_reminder:Xdays' => "%s dagen",
+	'validation_reminder:1day' => "1 dag",
 
 	'validation_reminder:validate:token:subject' => "%s, bevestig alsjeblieft je e-mailadres voor %s!",
 	'validation_reminder:validate:token:body' => "Beste %s,

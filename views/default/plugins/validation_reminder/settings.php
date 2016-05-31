@@ -2,15 +2,15 @@
 /**
  * Plugin settings
  */
+$maxdays = 15;
+
 $days_options = array(
-	"1" => elgg_echo("1 dag"),
-	"2" => elgg_echo("2 dagen"),
-	"3" => elgg_echo("3 dagen"),
-	"4" => elgg_echo("4 dagen"),
-	"5" => elgg_echo("5 dagen"),
-	"6" => elgg_echo("6 dagen"),
-	"7" => elgg_echo("7 dagen")
+	"1" => elgg_echo("validation_reminder:1day")
 );
+
+for($i=2;$i<=$maxdays;$i++){
+	$days_options[$i] = elgg_echo("validation_reminder:Xdays",array($i));
+}
 
 $validation_reminder_first_message = $vars['entity']->validation_reminder_first_message;
 $validation_reminder_second_message = $vars['entity']->validation_reminder_second_message;

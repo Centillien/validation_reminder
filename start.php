@@ -40,29 +40,18 @@ function clean_unvalidate($vars)
 
 
     foreach ($users as $user) {
-        $validate_reminder_start_date_data = array(
-            'guid' => $user->guid,
-            'metadata_name' => "validate_reminder_start_date"
-        );
-        if ($validate_reminder_start_date = elgg_get_metadata($validate_reminder_start_date_data)) {
-            $validate_reminder_start_date = $validate_reminder_start_date[0]->value;
-
-            if (time() - $validate_reminder_start_date >= $days_till_removal * 24 * 60 * 60) {
-                $user->delete();
-                echo 'account removed ';
-            } else if (time() - $validate_reminder_start_date >= $days_till_second_reminder * 24 * 60 * 60) {
-                send_validation_reminder_mail($user,$days_till_removal,$days_till_second_reminder);
-                echo 'send second reminder send';
-            } else if (time() - $validate_reminder_start_date >= $days_till_first_reminder * 24 * 60 * 60) {
-                send_validation_reminder_mail($user,$days_till_removal,$days_till_first_reminder);
-                echo 'send first reminder send';
-            } else {
-                echo 'waiting for validation';
-            }
+        $validate_reminder_start_date = $user->time_created;
+        if (time() - $validate_reminder_start_date >= $days_till_removal * 24 * 60 * 60) {
+            $user->delete();
+            echo 'account removed ';
+        } else if (time() - $validate_reminder_start_date >= $days_till_second_reminder * 24 * 60 * 60) {
+            send_validation_reminder_mail($user,$days_till_removal,$days_till_second_reminder);
+            echo 'send second reminder send';
+        } else if (time() - $validate_reminder_start_date >= $days_till_first_reminder * 24 * 60 * 60) {
+            send_validation_reminder_mail($user,$days_till_removal,$days_till_first_reminder);
+            echo 'send first reminder send';
         } else {
-            $user->validate_reminder_start_date = time();
-            $user->save();
-            echo 'checkprofile createrd';
+            echo 'waiting for validation ';
         }
 
         echo ' for user: ' . $user->getGUID() . '<br>';
@@ -97,9 +86,9 @@ function send_validation_reminder_mail($user,$enddate,$pastdays)
             $pastdays,
             $user->token,
             $link,
+            $daysleft,
             $site->name,
-            $site->url,
-            $daysleft
+            $site->url
         ),
         $user->language
     );
