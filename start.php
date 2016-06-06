@@ -82,8 +82,8 @@ function send_validation_reminder_mail($user,$enddate,$pastdays)
         'validation_reminder:validate:token:body',
         array(
             $user->name,
-            $site->name,
             $pastdays,
+            $site->name,
             $user->token,
             $link,
             $daysleft,
