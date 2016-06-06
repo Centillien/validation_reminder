@@ -15,7 +15,7 @@ $dutch = array(
 U heeft %s dag(en) geleden een account aangemaakt op %s.
 U kunt uw account echter pas gebruiken als u uw e-mailadres heeft bevestigd.
 
-Om je e-mailadres te bevestigen dien je de volgende code in onze app in te vullen: %s
+Om uw e-mailadres te bevestigen dient u de volgende code in onze app in te vullen: %s
 
 Wanneer u perongelijk de app afgesloten heeft, kunt u uw account ook valideren door op de volgende link te drukken: %s
 
@@ -24,7 +24,7 @@ Als uw account niet binnen %s dagen geactiveerd word wordt uw account automatisc
 %s
 
 ---
-Dit is een automatisch aangemaakt bericht. Je kunt hier niet op reageren.
+Dit is een automatisch aangemaakt bericht. U kunt hier niet op reageren.
 "
 );
 
