@@ -16,6 +16,9 @@ function validation_reminder_init()
 
 }
 
+/**
+ * Clean unvalidated users cron hook
+ */
 function clean_unvalidate($vars)
 {
     $days_till_first_reminder = elgg_get_plugin_setting("validation_reminder_first_message") * 1;
@@ -38,32 +41,40 @@ function clean_unvalidate($vars)
         )
     ]);
 
-
     foreach ($users as $user) {
         $validate_reminder_start_date = $user->time_created;
-        if (time() - $validate_reminder_start_date >= $days_till_removal * 24 * 60 * 60) {
+
+	if (time() - $validate_reminder_start_date >= $days_till_removal * 24 * 60 * 60) {
             $user->delete();
-            echo 'account removed ';
+            echo 'Account deleted';
         } else if (time() - $validate_reminder_start_date >= $days_till_second_reminder * 24 * 60 * 60) {
-            send_validation_reminder_mail($user,$days_till_removal,$days_till_second_reminder);
-            echo 'send second reminder send';
+            send_validation_reminder_mail($user, $days_till_removal, $days_till_second_reminder);
+            echo 'Send second reminder send';
         } else if (time() - $validate_reminder_start_date >= $days_till_first_reminder * 24 * 60 * 60) {
-            send_validation_reminder_mail($user,$days_till_removal,$days_till_first_reminder);
-            echo 'send first reminder send';
+            send_validation_reminder_mail($user, $days_till_removal, $days_till_first_reminder);
+            echo 'Send first reminder send';
         } else {
-            echo 'waiting for validation ';
+            echo 'Waiting for validation';
         }
 
-        echo ' for user: ' . $user->getGUID() . '<br>';
+        echo ' for user: ' . $user->getGUID() . PHP_EOL;
     }
 
     elgg_set_ignore_access($proviousIgnoreAccess);
     access_show_hidden_entities($proviousAccessShowHiddenEntities);
 }
 
-function send_validation_reminder_mail($user,$enddate,$pastdays)
+/**
+ * Send validation reminder to a specified user with
+ * some parameters.
+ *
+ * @param ElggUser $user User to send the reminder to
+ * @param int $enddate The end date in a unix timestamp
+ * @param int $pastdays The days we've passed since the validation
+ */
+function send_validation_reminder_mail($user, $enddate, $pastdays)
 {
-    $daysleft = $enddate-$pastdays;
+    $daysleft = $enddate - $pastdays;
     $site = elgg_get_site_entity();
 
     $code = uservalidationbyemail_generate_code($user->getGUID(), $user->email);
