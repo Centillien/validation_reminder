@@ -1,8 +1,6 @@
 <?php
-/**
- * 	nl.php - Dutch language variables
- */
-$dutch = array(
+
+return [
 	'validation_reminder:first_message_input' => "De eerste herinnering moet verstuurd worden na:",
 	'validation_reminder:second_message_input' => "De tweede herinnering moet verstuurd worden na:",
 	'validation_reminder:remove_input' => "Het account moet verwijderd worden na:",
@@ -24,8 +22,5 @@ Als uw account niet binnen %s dagen geactiveerd word wordt uw account automatisc
 %s
 
 ---
-Dit is een automatisch aangemaakt bericht. U kunt hier niet op reageren.
-"
-);
-
-add_translation("nl", $dutch);
+Dit is een automatisch aangemaakt bericht. U kunt hier niet op reageren."
+];

@@ -1,8 +1,6 @@
 <?php
-/**
- * 	en.php - English language variables
- */
-$english = array(
+
+return [
 	'validation_reminder:first_message_input' => "First reminder will be send in:",
 	'validation_reminder:second_message_input' => "Second reminder will be send in:",
 	'validation_reminder:remove_input' => "Account will be removed after:",
@@ -21,8 +19,5 @@ When you closed the app, you\'re also able to validate your account by clicking 
 
 There are %s days remaining before your account will be removed automaticaly.
 %s
-%s
-"
-);
-
-add_translation("en", $english);
+%s"
+];
