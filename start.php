@@ -43,21 +43,23 @@ function clean_unvalidate($vars)
 
     foreach ($users as $user) {
         $validate_reminder_start_date = $user->time_created;
-
+        
 	if (time() - $validate_reminder_start_date >= $days_till_removal * 24 * 60 * 60) {
             $user->delete();
             echo 'Account deleted';
-        } else if (time() - $validate_reminder_start_date >= $days_till_second_reminder * 24 * 60 * 60) {
+        } else if (time() - $validate_reminder_start_date >= $days_till_second_reminder * 24 * 60 * 60 &&
+            time() - $validate_reminder_start_date <= ($days_till_second_reminder + 1) * 24 * 60 * 60 ) {
             send_validation_reminder_mail($user, $days_till_removal, $days_till_second_reminder);
             echo 'Send second reminder send';
-        } else if (time() - $validate_reminder_start_date >= $days_till_first_reminder * 24 * 60 * 60) {
+        } else if (time() - $validate_reminder_start_date >= $days_till_first_reminder * 24 * 60 * 60 &&
+            time() - $validate_reminder_start_date <= ($days_till_first_reminder + 1) * 24 * 60 * 60 ) {
             send_validation_reminder_mail($user, $days_till_removal, $days_till_first_reminder);
             echo 'Send first reminder send';
         } else {
             echo 'Waiting for validation';
         }
 
-        echo ' for user: ' . $user->getGUID() . PHP_EOL;
+        echo ' for user: ' . $user->getGUID() . PHP_EOL . '<br>';
     }
 
     elgg_set_ignore_access($proviousIgnoreAccess);
