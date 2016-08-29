@@ -11,11 +11,11 @@ return [
 	'validation_reminder:validate:token:body' => "%s,
 	
 %s day(s) ago you registerd to %s.
-Before you can start you using your account, you must confirm your email address.
+Before you can start using your account, you must confirm your email address.
 	
 Please confirm your email address by entering the following code into our app: %s
 
-When you closed the app, you\'re also able to validate your account by clicking the following link: %s
+When you closed the site, you can also able to validate your account by clicking the following link: %s
 
 There are %s days remaining before your account will be removed automaticaly.
 %s
