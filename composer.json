@@ -2,6 +2,8 @@
   "name": "centillien/validation_reminder",
   "description": "Reminds user to validate their account. Or removes account after a certain amount of time, if not validated.",
   "type": "elgg-plugin",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "keywords": [
     "elgg",
     "plugin"
@@ -11,5 +13,8 @@
     {
       "name": "Jop Knoppers"
     }
-  ]
+  ],
+  "require": {
+    "elgg/elgg": ">=2.3.0"
+  }
 }

@@ -43,7 +43,7 @@ function clean_unvalidate($vars)
 
     foreach ($users as $user) {
         $validate_reminder_start_date = $user->time_created;
-        
+
 	if (time() - $validate_reminder_start_date >= $days_till_removal * 24 * 60 * 60) {
             $user->delete();
             echo 'Account deleted';
@@ -79,8 +79,8 @@ function send_validation_reminder_mail($user, $enddate, $pastdays)
     $daysleft = $enddate - $pastdays;
     $site = elgg_get_site_entity();
 
-    $code = uservalidationbyemail_generate_code($user->getGUID(), $user->email);
-    $link = $site->url . 'uservalidationbyemail/confirm?u=' . $user->getGUID() . '&c=' . $code;
+    $link = $site->url . 'uservalidationbyemail/confirm?u=' . $user->guid;
+    $link = elgg_http_get_signed_url($link);
 
     $subject = elgg_echo(
         'validation_reminder:validate:token:subject',
